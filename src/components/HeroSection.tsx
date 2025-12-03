@@ -1,30 +1,156 @@
 import { ArrowDown, Github, Linkedin, Mail } from 'lucide-react';
+import { useEffect, useRef, useState } from 'react';
 
 const HeroSection = () => {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      if (!containerRef.current) return;
+      const rect = containerRef.current.getBoundingClientRect();
+      const x = (e.clientX - rect.left - rect.width / 2) / rect.width;
+      const y = (e.clientY - rect.top - rect.height / 2) / rect.height;
+      setMousePosition({ x, y });
+    };
+
+    window.addEventListener('mousemove', handleMouseMove);
+    return () => window.removeEventListener('mousemove', handleMouseMove);
+  }, []);
+
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background Elements */}
+    <section 
+      ref={containerRef}
+      className="relative min-h-screen flex items-center justify-center overflow-hidden perspective-1000"
+    >
+      {/* 3D Background Scene */}
       <div className="absolute inset-0 bg-background">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/10 rounded-full blur-3xl floating" />
-        <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-accent/10 rounded-full blur-3xl floating-delayed" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/5 rounded-full blur-3xl" />
+        {/* Animated gradient orbs */}
+        <div 
+          className="absolute top-1/4 left-1/4 w-[500px] h-[500px] rounded-full blur-[100px] animate-morph"
+          style={{
+            background: 'radial-gradient(circle, hsl(199 89% 48% / 0.3) 0%, transparent 70%)',
+            transform: `translate3d(${mousePosition.x * 30}px, ${mousePosition.y * 30}px, 0)`,
+          }}
+        />
+        <div 
+          className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] rounded-full blur-[80px] animate-morph-delayed"
+          style={{
+            background: 'radial-gradient(circle, hsl(260 70% 60% / 0.25) 0%, transparent 70%)',
+            transform: `translate3d(${mousePosition.x * -20}px, ${mousePosition.y * -20}px, 0)`,
+          }}
+        />
+        <div 
+          className="absolute top-1/2 left-1/2 w-[600px] h-[600px] rounded-full blur-[120px]"
+          style={{
+            background: 'radial-gradient(circle, hsl(45 93% 58% / 0.1) 0%, transparent 70%)',
+            transform: `translate(-50%, -50%) translate3d(${mousePosition.x * 15}px, ${mousePosition.y * 15}px, 0)`,
+          }}
+        />
       </div>
 
-      {/* Grid Pattern */}
-      <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:60px_60px]" />
+      {/* 3D Floating Geometric Shapes */}
+      <div className="absolute inset-0 pointer-events-none preserve-3d">
+        {/* Cube */}
+        <div 
+          className="absolute top-[15%] left-[10%] cube-container"
+          style={{
+            transform: `rotateX(${mousePosition.y * 20}deg) rotateY(${mousePosition.x * 20}deg)`,
+          }}
+        >
+          <div className="cube">
+            <div className="cube-face cube-front" />
+            <div className="cube-face cube-back" />
+            <div className="cube-face cube-right" />
+            <div className="cube-face cube-left" />
+            <div className="cube-face cube-top" />
+            <div className="cube-face cube-bottom" />
+          </div>
+        </div>
+
+        {/* Octahedron */}
+        <div 
+          className="absolute top-[20%] right-[15%] octahedron-container"
+          style={{
+            transform: `rotateX(${mousePosition.y * -25}deg) rotateY(${mousePosition.x * 25}deg)`,
+          }}
+        >
+          <div className="octahedron">
+            <div className="octa-face octa-1" />
+            <div className="octa-face octa-2" />
+            <div className="octa-face octa-3" />
+            <div className="octa-face octa-4" />
+            <div className="octa-face octa-5" />
+            <div className="octa-face octa-6" />
+            <div className="octa-face octa-7" />
+            <div className="octa-face octa-8" />
+          </div>
+        </div>
+
+        {/* Floating Ring */}
+        <div 
+          className="absolute bottom-[25%] left-[8%] ring-3d"
+          style={{
+            transform: `rotateX(${60 + mousePosition.y * 15}deg) rotateZ(${mousePosition.x * 30}deg)`,
+          }}
+        />
+
+        {/* Pyramid */}
+        <div 
+          className="absolute bottom-[30%] right-[12%] pyramid-container"
+          style={{
+            transform: `rotateX(${mousePosition.y * 15}deg) rotateY(${mousePosition.x * -20}deg)`,
+          }}
+        >
+          <div className="pyramid">
+            <div className="pyramid-face pyramid-front" />
+            <div className="pyramid-face pyramid-right" />
+            <div className="pyramid-face pyramid-back" />
+            <div className="pyramid-face pyramid-left" />
+            <div className="pyramid-base" />
+          </div>
+        </div>
+
+        {/* Floating spheres */}
+        <div 
+          className="absolute top-[40%] left-[5%] w-4 h-4 rounded-full bg-primary/60 shadow-[0_0_30px_hsl(199_89%_48%/0.5)] animate-float-slow"
+          style={{ transform: `translate3d(${mousePosition.x * 50}px, ${mousePosition.y * 50}px, 100px)` }}
+        />
+        <div 
+          className="absolute top-[60%] right-[8%] w-6 h-6 rounded-full bg-accent/50 shadow-[0_0_25px_hsl(45_93%_58%/0.4)] animate-float-medium"
+          style={{ transform: `translate3d(${mousePosition.x * -40}px, ${mousePosition.y * -40}px, 80px)` }}
+        />
+        <div 
+          className="absolute top-[30%] right-[30%] w-3 h-3 rounded-full bg-purple-500/50 shadow-[0_0_20px_rgba(168,85,247,0.4)] animate-float-fast"
+          style={{ transform: `translate3d(${mousePosition.x * 60}px, ${mousePosition.y * 60}px, 120px)` }}
+        />
+        <div 
+          className="absolute bottom-[40%] left-[25%] w-5 h-5 rounded-full bg-primary/40 shadow-[0_0_25px_hsl(199_89%_48%/0.3)] animate-float-medium"
+          style={{ transform: `translate3d(${mousePosition.x * -30}px, ${mousePosition.y * -30}px, 60px)` }}
+        />
+      </div>
+
+      {/* Grid with perspective */}
+      <div className="absolute inset-0 grid-3d" />
 
       <div className="container mx-auto px-6 relative z-10">
-        <div className="max-w-4xl mx-auto text-center">
+        <div 
+          className="max-w-4xl mx-auto text-center"
+          style={{
+            transform: `perspective(1000px) rotateX(${mousePosition.y * 2}deg) rotateY(${mousePosition.x * 2}deg)`,
+            transition: 'transform 0.1s ease-out',
+          }}
+        >
           {/* Status Badge */}
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-secondary border border-border mb-8 opacity-0 animate-fade-in-up">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-card mb-8 opacity-0 animate-fade-in-up">
             <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
             <span className="text-sm text-muted-foreground">Disponible pour des missions</span>
           </div>
 
-          {/* Main Heading */}
+          {/* Main Heading with 3D effect */}
           <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold leading-tight mb-6 opacity-0 animate-fade-in-up animation-delay-100">
-            Salut, moi c'est{' '}
-            <span className="gradient-text">Nizar</span>
+            <span className="inline-block text-3d">Salut, moi c'est</span>{' '}
+            <span className="gradient-text text-3d-glow inline-block">Nizar</span>
           </h1>
 
           {/* Subtitle */}
@@ -39,29 +165,29 @@ const HeroSection = () => {
             je construis des applications performantes et scalables.
           </p>
 
-          {/* CTA Buttons */}
+          {/* CTA Buttons with 3D hover */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12 opacity-0 animate-fade-in-up animation-delay-400">
             <a
               href="#projects"
-              className="px-8 py-4 bg-primary text-primary-foreground rounded-xl font-semibold text-base hover:bg-primary/90 transition-all duration-300 hover:shadow-xl hover:shadow-primary/25 hover:-translate-y-1 w-full sm:w-auto"
+              className="btn-3d px-8 py-4 bg-primary text-primary-foreground rounded-xl font-semibold text-base w-full sm:w-auto"
             >
-              Voir mes projets
+              <span className="btn-3d-content">Voir mes projets</span>
             </a>
             <a
               href="#contact"
-              className="px-8 py-4 bg-secondary border border-border text-foreground rounded-xl font-semibold text-base hover:bg-muted transition-all duration-300 hover:-translate-y-1 w-full sm:w-auto"
+              className="btn-3d-outline px-8 py-4 rounded-xl font-semibold text-base w-full sm:w-auto"
             >
-              Parlons-en
+              <span className="btn-3d-content">Parlons-en</span>
             </a>
           </div>
 
-          {/* Social Links */}
+          {/* Social Links with 3D effect */}
           <div className="flex items-center justify-center gap-4 opacity-0 animate-fade-in-up animation-delay-500">
             <a
               href="https://github.com/NIZAR-BENAKKADOU"
               target="_blank"
               rel="noopener noreferrer"
-              className="p-3 rounded-xl bg-secondary border border-border text-muted-foreground hover:text-foreground hover:border-primary hover:shadow-lg hover:shadow-primary/10 transition-all duration-300"
+              className="social-icon-3d"
             >
               <Github size={22} />
             </a>
@@ -69,13 +195,13 @@ const HeroSection = () => {
               href="https://www.linkedin.com/in/nizar-benakkadou-2bb541311/"
               target="_blank"
               rel="noopener noreferrer"
-              className="p-3 rounded-xl bg-secondary border border-border text-muted-foreground hover:text-foreground hover:border-primary hover:shadow-lg hover:shadow-primary/10 transition-all duration-300"
+              className="social-icon-3d"
             >
               <Linkedin size={22} />
             </a>
             <a
               href="mailto:nizar.ben123456@gmail.com"
-              className="p-3 rounded-xl bg-secondary border border-border text-muted-foreground hover:text-foreground hover:border-primary hover:shadow-lg hover:shadow-primary/10 transition-all duration-300"
+              className="social-icon-3d"
             >
               <Mail size={22} />
             </a>
