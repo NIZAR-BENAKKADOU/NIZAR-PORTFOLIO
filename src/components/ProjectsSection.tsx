@@ -1,4 +1,90 @@
 import { ExternalLink, Github } from 'lucide-react';
+import { useTilt } from '@/hooks/useTilt';
+
+interface Project {
+  title: string;
+  subtitle: string;
+  description: string;
+  stack: string[];
+  gradient: string;
+  accentColor: string;
+}
+
+const ProjectCard = ({ project, index }: { project: Project; index: number }) => {
+  const { values, onMouseMove, onMouseLeave } = useTilt({
+    maxTilt: 7,
+    perspective: 1000,
+    scale: 1.02,
+  });
+
+  return (
+    <article
+      className="group relative rounded-2xl bg-card border border-border card-3d-container h-full"
+      onMouseMove={onMouseMove}
+      onMouseLeave={onMouseLeave}
+    >
+      <div
+        className="h-full card-3d-content rounded-2xl overflow-hidden"
+        style={{ transform: values.transform }}
+      >
+        {/* Gradient Header */}
+        <div
+          className={`h-32 bg-gradient-to-br ${project.gradient} relative overflow-hidden card-floating-item`}
+        >
+          <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:20px_20px]" />
+          <div className="absolute bottom-4 left-6">
+            <span className={`text-xs font-mono ${project.accentColor} font-bold tracking-wider`}>
+              #{String(index + 1).padStart(2, '0')}
+            </span>
+          </div>
+        </div>
+
+        {/* Content */}
+        <div className="p-6 flex flex-col h-[calc(100%-8rem)]">
+          <h3 className="text-xl font-bold mb-1 group-hover:text-primary transition-colors card-floating-item-deep">
+            {project.title}
+          </h3>
+          <p className={`text-sm font-medium ${project.accentColor} mb-3 card-floating-item`}>
+            {project.subtitle}
+          </p>
+          <p className="text-muted-foreground text-sm leading-relaxed mb-4 flex-grow card-floating-item">
+            {project.description}
+          </p>
+
+          {/* Tech Stack */}
+          <div className="flex flex-wrap gap-2 mb-4 card-floating-item">
+            {project.stack.map((tech) => (
+              <span
+                key={tech}
+                className="px-2.5 py-1 text-xs font-medium bg-secondary rounded-md text-muted-foreground border border-transparent hover:border-primary/30 transition-colors"
+              >
+                {tech}
+              </span>
+            ))}
+          </div>
+
+          {/* Links */}
+          <div className="flex items-center gap-3 pt-4 border-t border-border mt-auto card-floating-item">
+            <a
+              href="#"
+              className="flex items-center gap-1.5 text-sm text-muted-foreground hover:text-foreground transition-colors hover:translate-x-1 duration-300"
+            >
+              <Github size={16} />
+              <span>Code</span>
+            </a>
+            <a
+              href="#"
+              className="flex items-center gap-1.5 text-sm text-muted-foreground hover:text-foreground transition-colors hover:translate-x-1 duration-300"
+            >
+              <ExternalLink size={16} />
+              <span>Demo</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </article>
+  );
+};
 
 const ProjectsSection = () => {
   const projects = [
@@ -53,6 +139,7 @@ const ProjectsSection = () => {
     <section id="projects" className="py-24 md:py-32 relative overflow-hidden">
       {/* Background Elements */}
       <div className="absolute top-1/4 right-0 w-1/2 h-1/2 bg-primary/5 rounded-full blur-3xl translate-x-1/2" />
+      <div className="absolute bottom-0 left-0 w-1/3 h-1/3 bg-accent/5 rounded-full blur-3xl -translate-x-1/2" />
 
       <div className="container mx-auto px-6 relative z-10">
         {/* Section Header */}
@@ -69,67 +156,9 @@ const ProjectsSection = () => {
         </div>
 
         {/* Projects Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto perspective-1000">
           {projects.map((project, index) => (
-            <article
-              key={project.title}
-              className="group relative rounded-2xl bg-card border border-border overflow-hidden card-glow"
-            >
-              {/* Gradient Header */}
-              <div
-                className={`h-32 bg-gradient-to-br ${project.gradient} relative overflow-hidden`}
-              >
-                <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:20px_20px]" />
-                <div className="absolute bottom-4 left-6">
-                  <span className={`text-xs font-mono ${project.accentColor}`}>
-                    #{String(index + 1).padStart(2, '0')}
-                  </span>
-                </div>
-              </div>
-
-              {/* Content */}
-              <div className="p-6">
-                <h3 className="text-xl font-bold mb-1 group-hover:text-primary transition-colors">
-                  {project.title}
-                </h3>
-                <p className={`text-sm font-medium ${project.accentColor} mb-3`}>
-                  {project.subtitle}
-                </p>
-                <p className="text-muted-foreground text-sm leading-relaxed mb-4">
-                  {project.description}
-                </p>
-
-                {/* Tech Stack */}
-                <div className="flex flex-wrap gap-2 mb-4">
-                  {project.stack.map((tech) => (
-                    <span
-                      key={tech}
-                      className="px-2.5 py-1 text-xs font-medium bg-secondary rounded-md text-muted-foreground"
-                    >
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-
-                {/* Links */}
-                <div className="flex items-center gap-3 pt-4 border-t border-border">
-                  <a
-                    href="#"
-                    className="flex items-center gap-1.5 text-sm text-muted-foreground hover:text-foreground transition-colors"
-                  >
-                    <Github size={16} />
-                    <span>Code</span>
-                  </a>
-                  <a
-                    href="#"
-                    className="flex items-center gap-1.5 text-sm text-muted-foreground hover:text-foreground transition-colors"
-                  >
-                    <ExternalLink size={16} />
-                    <span>Demo</span>
-                  </a>
-                </div>
-              </div>
-            </article>
+            <ProjectCard key={project.title} project={project} index={index} />
           ))}
         </div>
 
@@ -142,12 +171,12 @@ const ProjectsSection = () => {
             <img
               src="https://github-readme-stats.vercel.app/api?username=NIZAR-BENAKKADOU&show_icons=true&count_private=true&theme=transparent&hide_border=true&title_color=0ea5e9&icon_color=0ea5e9&text_color=94a3b8&bg_color=0d1117"
               alt="GitHub Stats"
-              className="rounded-xl border border-border"
+              className="rounded-xl border border-border hover:border-primary/50 transition-colors duration-300"
             />
             <img
               src="https://github-readme-streak-stats.herokuapp.com/?user=NIZAR-BENAKKADOU&theme=transparent&hide_border=true&ring=0ea5e9&fire=f59e0b&currStreakLabel=f4f4f5&sideLabels=94a3b8&dates=64748b&background=0d1117"
               alt="GitHub Streak"
-              className="rounded-xl border border-border"
+              className="rounded-xl border border-border hover:border-primary/50 transition-colors duration-300"
             />
           </div>
         </div>
