@@ -1,115 +1,154 @@
 # 🚀 Nizar Benakkadou | Portfolio
 
-A modern, responsive portfolio website built with React, TypeScript, and Tailwind CSS. This portfolio showcases my skills and projects as a Full Stack Developer specializing in Laravel and React.
+> **Portfolio personnel de Nizar Benakkadou - Architecte Full Stack Laravel & React**
 
-![TypeScript](https://img.shields. io/badge/TypeScript-92%25-blue)
-![CSS](https://img.shields.io/badge/CSS-6. 9%25-purple)
-![Vite](https://img.shields. io/badge/Vite-5.4-646CFF)
-![React](https://img.shields.io/badge/React-18.3-61DAFB)
 
-## ✨ Features
 
-- ⚡ **Lightning Fast** - Built with Vite for optimal performance
-- 🎨 **Modern UI** - Sleek design with Tailwind CSS and Radix UI components
-- 📱 **Fully Responsive** - Looks great on all devices
-- 🌙 **Theme Support** - Light/Dark mode with next-themes
-- 🔧 **Type Safe** - Full TypeScript support
-- 📊 **Data Visualization** - Interactive charts with Recharts
-- 🗄️ **Backend Integration** - Supabase for data management
+## 📋 À propos du projet
 
-## 🛠️ Tech Stack
+Ce portfolio moderne présente mes compétences, projets et expériences en tant que développeur Full Stack.  Conçu avec une attention particulière aux détails, ce site utilise les dernières technologies web pour offrir une expérience utilisateur fluide et performante.
 
-| Category | Technologies |
-|----------|-------------|
-| **Frontend** | React 18, TypeScript, Tailwind CSS |
-| **Build Tool** | Vite |
-| **UI Components** | Radix UI, shadcn/ui |
-| **State Management** | TanStack React Query |
-| **Forms** | React Hook Form, Zod |
-| **Backend** | Supabase |
-| **Styling** | Tailwind CSS, tailwindcss-animate |
 
-## 📁 Project Structure
+## 🛠️ Technologies utilisées
+
+Ce projet est construit avec un stack technologique moderne :
+
+- **⚡ Vite** - Build tool ultra-rapide
+- **⚛️ React 18. 3** - Bibliothèque UI avec React Hooks
+- **📘 TypeScript** - Pour un code type-safe et maintenable
+- **🎨 Tailwind CSS** - Framework CSS utility-first
+- **🧩 shadcn/ui** - Composants UI réutilisables et accessibles
+- **🔄 React Router** - Navigation côté client
+- **📊 TanStack Query** - Gestion d'état et cache
+- **🗄️ Supabase** - Backend as a Service
+- **📈 Recharts** - Bibliothèque de graphiques
+
+## 📁 Structure du projet
 
 ```
-├── src/
-│   ├── components/     # Reusable UI components
-│   ├── hooks/          # Custom React hooks
-│   ├── integrations/   # Third-party integrations (Supabase)
-│   ├── lib/            # Utility functions
-│   ├── pages/          # Page components
-│   ├── App.tsx         # Main application component
-│   └── main.tsx        # Application entry point
-├── public/             # Static assets
-├── supabase/           # Supabase configuration
-└── index.html          # HTML entry point
+nizar-digital-canvas/
+├── src/                    # Code source principal
+│   ├── components/         # Composants React réutilisables
+│   ├── pages/             # Pages de l'application
+│   ├── lib/               # Utilitaires et helpers
+│   ├── hooks/             # Custom React hooks
+│   └── main.tsx           # Point d'entrée de l'application
+├── public/                # Assets statiques
+├── index.html            # Template HTML principal
+├── tailwind.config.ts    # Configuration Tailwind CSS
+├── vite.config.ts        # Configuration Vite
+├── tsconfig.json         # Configuration TypeScript
+└── package.json          # Dépendances et scripts
 ```
 
-## 🚀 Getting Started
+## 🚀 Installation et développement local
 
-### Prerequisites
+### Prérequis
 
-- Node.js (v18 or higher)
-- npm, yarn, or bun
+- **Node.js** (v18 ou supérieur) - [Installation avec nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+- **npm** ou **yarn**
 
-### Installation
+### Étapes d'installation
 
-1. **Clone the repository**
-   ```bash
-   git clone https://github. com/NIZAR-BENAKKADOU/NIZAR-PORTFOLIO.git
-   cd NIZAR-PORTFOLIO
-   ```
+```bash
+# 1. Cloner le repository
+git clone https://github.com/NIZAR-BENAKKADOU/NIZAR-PORTFOLIO
 
-2. **Install dependencies**
-   ```bash
-   npm install
-   # or
-   yarn install
-   # or
-   bun install
-   ```
+# 2.  Naviguer dans le dossier du projet
+cd NIZAR-PORTFOLIO
 
-3. **Set up environment variables**
-   
-   Create a `.env` file in the root directory and add your environment variables:
-   ```env
-   VITE_SUPABASE_URL=your_supabase_url
-   VITE_SUPABASE_ANON_KEY=your_supabase_anon_key
-   ```
+# 3. Installer les dépendances
+npm install
 
-4. **Start the development server**
-   ```bash
-   npm run dev
-   # or
-   yarn dev
-   # or
-   bun dev
-   ```
+# 4. Créer un fichier .env (voir section Configuration)
+cp .env.example .env
 
-5. **Open your browser**
-   
-   Navigate to `http://localhost:5173` to see the portfolio in action!
+# 5. Lancer le serveur de développement
+npm run dev
+```
 
-## 📜 Available Scripts
+Le site sera accessible sur `http://localhost:8080` 🎉
 
-| Command | Description |
-|---------|-------------|
-| `npm run dev` | Start development server |
-| `npm run build` | Build for production |
-| `npm run build:dev` | Build for development |
-| `npm run preview` | Preview production build |
-| `npm run lint` | Run ESLint |
+## ⚙️ Configuration
 
-## 🌐 Live Demo
+Le projet utilise des variables d'environnement pour la configuration.  Créez un fichier `.env` à la racine :
 
-Visit the live portfolio at: [nizar-benakkadou.dev](https://nizar-benakkadou. dev)
+```env
+VITE_SUPABASE_URL=votre_url_supabase
+VITE_SUPABASE_PUBLISHABLE_KEY=votre_clé_publique
+VITE_SUPABASE_PROJECT_ID=votre_project_id
+```
 
-## 📫 Contact
+## 📜 Scripts disponibles
 
-**Nizar Benakkadou** - Full Stack Developer (Laravel & React)
+```bash
+# Développement avec hot-reload
+npm run dev
 
-- 🌐 Website: [nizar-benakkadou.dev](https://nizar-benakkadou.dev)
-- 💼 GitHub: [@NIZAR-BENAKKADOU](https://github.com/NIZAR-BENAKKADOU)
+# Build pour la production
+npm run build
+
+# Build en mode développement
+npm run build:dev
+
+# Linter le code
+npm run lint
+
+# Preview du build de production
+npm run preview
+```
+
+## 🎨 Fonctionnalités principales
+
+- ✨ **Design moderne et responsive** - Optimisé pour tous les appareils
+- 🌓 **Mode sombre/clair** - Thème adaptatif avec next-themes
+- 🎭 **Animations fluides** - Transitions et animations CSS personnalisées
+- 🔍 **SEO optimisé** - Meta tags et Open Graph configurés
+- ⚡ **Performance optimale** - Code splitting et lazy loading
+- 📱 **PWA Ready** - Peut être installé comme application
+
+## 🤝 Contribution
+
+Les contributions sont les bienvenues ! N'hésitez pas à :
+
+1. Fork le projet
+2. Créer une branche (`git checkout -b feature/amelioration`)
+3. Commit vos changements (`git commit -m 'Ajout d'une fonctionnalité'`)
+4. Push vers la branche (`git push origin feature/amelioration`)
+5.  Ouvrir une Pull Request
+
+## 📝 Configuration ESLint
+
+Le projet utilise ESLint avec TypeScript pour maintenir la qualité du code :
+
+- Rules React Hooks
+- TypeScript ESLint recommandé
+- Configuration personnalisée pour la compatibilité du projet
+
+## 🎯 Déploiement
+
+Le projet peut être déployé facilement sur plusieurs plateformes :
+
+- **Vercel** - Déploiement automatique depuis GitHub
+- **Netlify** - Configuration zero-config
+- **GitHub Pages** - Avec GitHub Actions
+- **Lovable** - Plateforme de développement intégrée
+
+## 👤 Auteur
+
+**Nizar Benakkadou**
+- Portfolio: [nizar-benakkadou.dev](https://nizar-benakkadou.dev)
+- GitHub: [@NIZAR-BENAKKADOU](https://github.com/NIZAR-BENAKKADOU)
+
+## 📄 Licence
+
+Ce projet est sous licence privée - tous droits réservés.
+
+---
+
+⭐ **Star ce repo** si vous le trouvez utile ! 
+
+💼 **Contactez-moi** pour des opportunités de collaboration ou des projets freelance. 
 
 ## 📄 License
 
