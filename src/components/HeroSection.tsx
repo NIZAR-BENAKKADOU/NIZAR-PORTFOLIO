@@ -1,9 +1,17 @@
-import { ArrowDown, Github, Linkedin, Mail } from 'lucide-react';
+import { ArrowDown, Download, Github, Linkedin, Mail } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
+import { useTypingEffect } from '@/hooks/useTypingEffect';
 
 const HeroSection = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+
+  const typedText = useTypingEffect({
+    words: ['Full Stack Developer', 'Expert Laravel', 'Spécialiste React', 'Créateur d\'Applications'],
+    typingSpeed: 80,
+    deletingSpeed: 40,
+    pauseDuration: 1500,
+  });
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
@@ -65,9 +73,10 @@ const HeroSection = () => {
             <span className="gradient-text inline-block">Nizar</span>
           </h1>
 
-          {/* Subtitle */}
-          <p className="text-xl md:text-2xl text-muted-foreground mb-4 opacity-0 animate-fade-in-up animation-delay-200">
-            <span className="text-foreground font-semibold">Architecte Full Stack</span>
+          {/* Subtitle with Typing Effect */}
+          <p className="text-xl md:text-2xl text-muted-foreground mb-4 opacity-0 animate-fade-in-up animation-delay-200 h-8">
+            <span className="text-foreground font-semibold">{typedText}</span>
+            <span className="inline-block w-0.5 h-6 bg-primary ml-1 animate-pulse" />
           </p>
 
           {/* Description */}

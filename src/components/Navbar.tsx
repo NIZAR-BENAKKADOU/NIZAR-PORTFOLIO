@@ -15,6 +15,7 @@ const Navbar = () => {
 
   const navLinks = [
     { href: '#about', label: 'À propos' },
+    { href: '#timeline', label: 'Parcours' },
     { href: '#skills', label: 'Compétences' },
     { href: '#projects', label: 'Projets' },
     { href: '#contact', label: 'Contact' },
@@ -22,11 +23,10 @@ const Navbar = () => {
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        isScrolled
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${isScrolled
           ? 'bg-background/80 backdrop-blur-xl border-b border-border'
           : 'bg-transparent'
-      }`}
+        }`}
     >
       <div className="container mx-auto px-6 py-4">
         <div className="flex items-center justify-between">

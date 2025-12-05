@@ -46,7 +46,7 @@ const AboutSection = () => {
 
           {/* Right Column - Profile Picture */}
           <div className="order-1 lg:order-2 flex justify-center">
-            <Profile3D imageUrl="/profile.png" />
+            <Profile3D imageUrl="/images/profile.png" />
           </div>
         </div>
 

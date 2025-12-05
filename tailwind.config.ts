@@ -101,6 +101,10 @@ export default {
         'gradient-hero': 'linear-gradient(135deg, hsl(199 89% 48%) 0%, hsl(260 70% 55%) 50%, hsl(45 93% 58%) 100%)',
         'gradient-card': 'linear-gradient(145deg, hsl(222 47% 10%) 0%, hsl(222 47% 6%) 100%)',
       },
+      rotate: {
+        'x-2': 'rotateX(2deg)',
+        'y-2': 'rotateY(-2deg)',
+      },
     },
   },
   plugins: [require("tailwindcss-animate")],

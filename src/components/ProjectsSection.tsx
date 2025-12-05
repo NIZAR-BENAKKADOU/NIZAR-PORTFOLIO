@@ -13,7 +13,7 @@ interface Project {
 const ProjectCard = ({ project, index }: { project: Project; index: number }) => {
   return (
     <article className="group h-full">
-      <div className="h-full rounded-xl overflow-hidden bg-card border border-border hover:border-primary/50 transition-colors duration-300">
+      <div className="h-full rounded-xl overflow-hidden bg-card border border-border hover:border-primary/50 transition-all duration-300 hover:shadow-2xl hover:shadow-primary/20 hover:-translate-y-3 hover:scale-[1.02]">
 
         {/* Project Image */}
         <div className="relative h-48 overflow-hidden bg-gradient-to-r from-slate-800 to-slate-900">
@@ -87,7 +87,7 @@ const ProjectsSection = () => {
       stack: ['Laravel', 'React', 'MySQL', 'Stripe API'],
       gradient: 'from-green-500 to-emerald-500',
       iconColor: 'text-green-400',
-      image: 'C:/Users/nizar/.gemini/antigravity/brain/3744e83c-1758-41ea-9db3-3cdb87955473/stadiugo_project_1764959370320.png',
+      image: '/images/stadiugo_project_1764959370320.png',
     },
     {
       title: 'TeleMed',
@@ -97,7 +97,7 @@ const ProjectsSection = () => {
       stack: ['React', 'Laravel', 'WebRTC', 'TailwindCSS'],
       gradient: 'from-blue-500 to-cyan-500',
       iconColor: 'text-blue-400',
-      image: 'C:/Users/nizar/.gemini/antigravity/brain/3744e83c-1758-41ea-9db3-3cdb87955473/telemed_project_1764959385581.png',
+      image: '/images/telemed_project_1764959385581.png',
     },
     {
       title: 'ElectroStore',
@@ -107,7 +107,7 @@ const ProjectsSection = () => {
       stack: ['Laravel', 'Blade', 'JavaScript', 'MySQL'],
       gradient: 'from-purple-500 to-pink-500',
       iconColor: 'text-purple-400',
-      image: 'C:/Users/nizar/.gemini/antigravity/brain/3744e83c-1758-41ea-9db3-3cdb87955473/electrostore_project_1764959400301.png',
+      image: '/images/electrostore_project_1764959400301.png',
     },
     {
       title: 'InternTrack',
@@ -117,7 +117,7 @@ const ProjectsSection = () => {
       stack: ['React', 'Laravel API', 'PostgreSQL'],
       gradient: 'from-orange-500 to-amber-500',
       iconColor: 'text-orange-400',
-      image: 'C:/Users/nizar/.gemini/antigravity/brain/3744e83c-1758-41ea-9db3-3cdb87955473/interntrack_project_1764959415611.png',
+      image: '/images/interntrack_project_1764959415611.png',
     },
     {
       title: 'LibManage',
@@ -127,7 +127,7 @@ const ProjectsSection = () => {
       stack: ['PHP Native', 'MySQL', 'Bootstrap'],
       gradient: 'from-red-500 to-rose-500',
       iconColor: 'text-red-400',
-      image: 'C:/Users/nizar/.gemini/antigravity/brain/3744e83c-1758-41ea-9db3-3cdb87955473/libmanage_project_1764959431911.png',
+      image: '/images/libmanage_project_1764959431911.png',
     },
   ];
 
@@ -154,7 +154,7 @@ const ProjectsSection = () => {
         {/* Projects Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto perspective-1000">
           {projects.map((project, index) => (
-            <ProjectCard key={project.title} proje={project} index={index} />
+            <ProjectCard key={project.title} project={project} index={index} />
           ))}
         </div>
 
