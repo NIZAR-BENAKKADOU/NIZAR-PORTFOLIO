@@ -1,51 +1,77 @@
-# Nizar Digital Canvas 🎨
+# Nizar PORFOLIO 🎨
 
 > **Portfolio personnel de Nizar Benakkadou - Architecte Full Stack Laravel & React**
 
-
+![Portfolio Preview](public/images/profile.png)
 
 ## 📋 À propos du projet
 
-Ce portfolio moderne présente mes compétences, projets et expériences en tant que développeur Full Stack.  Conçu avec une attention particulière aux détails, ce site utilise les dernières technologies web pour offrir une expérience utilisateur fluide et performante.
+Ce portfolio moderne présente mes compétences, projets et expériences en tant que développeur Full Stack. Conçu avec une attention particulière aux détails et une esthétique premium, ce site utilise les dernières technologies web pour offrir une expérience utilisateur fluide, animée et performante.
 
+## ✨ Fonctionnalités clés
+
+- 🎯 **Animation de frappe** - Texte dynamique qui alterne entre différents titres
+- 📊 **Barre de progression de scroll** - Indicateur visuel avec dégradé coloré
+- 📅 **Timeline interactive** - Parcours professionnel avec effets hover
+- 🎨 **Effets 3D sur les cartes** - Lift, glow et shadow au survol
+- 🖼️ **Section Projets** - Galerie de projets avec images et descriptions
+- 📬 **Formulaire de contact** - Intégration EmailJS pour l'envoi de messages
+- 📱 **Design responsive** - Adapté à tous les appareils
 
 ## 🛠️ Technologies utilisées
 
 Ce projet est construit avec un stack technologique moderne :
 
 - **⚡ Vite** - Build tool ultra-rapide
-- **⚛️ React 18. 3** - Bibliothèque UI avec React Hooks
+- **⚛️ React 18.3** - Bibliothèque UI avec React Hooks
 - **📘 TypeScript** - Pour un code type-safe et maintenable
 - **🎨 Tailwind CSS** - Framework CSS utility-first
 - **🧩 shadcn/ui** - Composants UI réutilisables et accessibles
 - **🔄 React Router** - Navigation côté client
 - **📊 TanStack Query** - Gestion d'état et cache
 - **🗄️ Supabase** - Backend as a Service
-- **📈 Recharts** - Bibliothèque de graphiques
+- **💫 Lucide Icons** - Icônes modernes et personnalisables
 
 ## 📁 Structure du projet
 
 ```
 nizar-digital-canvas/
-├── src/                    # Code source principal
-│   ├── components/         # Composants React réutilisables
-│   ├── pages/             # Pages de l'application
-│   ├── lib/               # Utilitaires et helpers
-│   ├── hooks/             # Custom React hooks
-│   └── main.tsx           # Point d'entrée de l'application
-├── public/                # Assets statiques
-├── index.html            # Template HTML principal
-├── tailwind.config.ts    # Configuration Tailwind CSS
-├── vite.config.ts        # Configuration Vite
-├── tsconfig.json         # Configuration TypeScript
-└── package.json          # Dépendances et scripts
+├── src/
+│   ├── components/
+│   │   ├── AboutSection.tsx       # Section À propos avec photo 3D
+│   │   ├── ContactSection.tsx     # Formulaire de contact
+│   │   ├── Footer.tsx             # Pied de page
+│   │   ├── HeroSection.tsx        # Section héro avec animation de frappe
+│   │   ├── Navbar.tsx             # Navigation responsive
+│   │   ├── Profile3D.tsx          # Photo de profil avec effet 3D
+│   │   ├── ProjectsSection.tsx    # Galerie de projets
+│   │   ├── ScrollProgress.tsx     # Barre de progression
+│   │   ├── SkillsSection.tsx      # Compétences techniques
+│   │   └── TimelineSection.tsx    # Parcours professionnel
+│   ├── hooks/
+│   │   ├── useTypingEffect.ts     # Hook animation de frappe
+│   │   ├── useScrollAnimation.ts  # Hook animation au scroll
+│   │   └── useTilt.ts             # Hook effet 3D tilt
+│   ├── pages/
+│   │   └── Index.tsx              # Page principale
+│   ├── lib/
+│   │   └── utils.ts               # Fonctions utilitaires
+│   ├── index.css                  # Styles globaux et animations
+│   └── main.tsx                   # Point d'entrée
+├── public/
+│   ├── images/                    # Images des projets
+│   └── favicon.png                # Favicon personnalisé
+├── index.html                     # Template HTML avec SEO
+├── tailwind.config.ts             # Configuration Tailwind
+├── vite.config.ts                 # Configuration Vite
+└── package.json                   # Dépendances et scripts
 ```
 
 ## 🚀 Installation et développement local
 
 ### Prérequis
 
-- **Node.js** (v18 ou supérieur) - [Installation avec nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+- **Node.js** (v18 ou supérieur)
 - **npm** ou **yarn**
 
 ### Étapes d'installation
@@ -54,30 +80,17 @@ nizar-digital-canvas/
 # 1. Cloner le repository
 git clone https://github.com/NIZAR-BENAKKADOU/nizar-digital-canvas.git
 
-# 2.  Naviguer dans le dossier du projet
-cd nizar-digital-canvas
+# 2. Naviguer dans le dossier du projet
+cd portfolio
 
 # 3. Installer les dépendances
 npm install
 
-# 4. Créer un fichier .env (voir section Configuration)
-cp .env.example .env
-
-# 5. Lancer le serveur de développement
+# 4. Lancer le serveur de développement
 npm run dev
 ```
 
 Le site sera accessible sur `http://localhost:8080` 🎉
-
-## ⚙️ Configuration
-
-Le projet utilise des variables d'environnement pour la configuration.  Créez un fichier `.env` à la racine :
-
-```env
-VITE_SUPABASE_URL=votre_url_supabase
-VITE_SUPABASE_PUBLISHABLE_KEY=votre_clé_publique
-VITE_SUPABASE_PROJECT_ID=votre_project_id
-```
 
 ## 📜 Scripts disponibles
 
@@ -98,47 +111,45 @@ npm run lint
 npm run preview
 ```
 
-## 🎨 Fonctionnalités principales
+## 🎨 Design et Animations
 
-- ✨ **Design moderne et responsive** - Optimisé pour tous les appareils
-- 🌓 **Mode sombre/clair** - Thème adaptatif avec next-themes
-- 🎭 **Animations fluides** - Transitions et animations CSS personnalisées
-- 🔍 **SEO optimisé** - Meta tags et Open Graph configurés
-- ⚡ **Performance optimale** - Code splitting et lazy loading
-- 📱 **PWA Ready** - Peut être installé comme application
+### Animations personnalisées
+- **Typing Effect** - Animation de machine à écrire pour les titres
+- **Scroll Progress** - Barre de progression avec dégradé (bleu → violet → or)
+- **Fade In Up** - Animation d'apparition au scroll
+- **Hover Effects** - Lift, glow et scale sur les cartes
+- **Floating Elements** - Éléments décoratifs animés
+- **Morph Animation** - Formes organiques animées en arrière-plan
 
-## 🤝 Contribution
+### Palette de couleurs
+- **Primary**: Bleu cyan (#0ea5e9)
+- **Accent**: Or/Ambre (#f59e0b)
+- **Background**: Bleu foncé profond
+- **Gradients**: Dégradés dynamiques bleu → violet → or
 
-Les contributions sont les bienvenues ! N'hésitez pas à :
+## 📝 Sections du Portfolio
 
-1. Fork le projet
-2. Créer une branche (`git checkout -b feature/amelioration`)
-3. Commit vos changements (`git commit -m 'Ajout d'une fonctionnalité'`)
-4. Push vers la branche (`git push origin feature/amelioration`)
-5.  Ouvrir une Pull Request
-
-## 📝 Configuration ESLint
-
-Le projet utilise ESLint avec TypeScript pour maintenir la qualité du code :
-
-- Rules React Hooks
-- TypeScript ESLint recommandé
-- Configuration personnalisée pour la compatibilité du projet
+1. **Hero** - Présentation avec animation de frappe et liens sociaux
+2. **À propos** - Bio et statistiques avec photo 3D interactive
+3. **Parcours** - Timeline professionnelle (CHU Hassan II, Atacadão, Arti Web, Labonord)
+4. **Compétences** - Stack technique avec badges animés
+5. **Projets** - Galerie (StadiuGo, TeleMed, ElectroStore, InternTrack, LibManage)
+6. **Contact** - Formulaire avec validation
 
 ## 🎯 Déploiement
 
-Le projet peut être déployé facilement sur plusieurs plateformes :
+Le projet peut être déployé sur :
 
 - **Vercel** - Déploiement automatique depuis GitHub
 - **Netlify** - Configuration zero-config
 - **GitHub Pages** - Avec GitHub Actions
-- **Lovable** - Plateforme de développement intégrée
 
 ## 👤 Auteur
 
 **Nizar Benakkadou**
-- Portfolio: [nizar-benakkadou.dev](https://nizar-benakkadou.dev)
-- GitHub: [@NIZAR-BENAKKADOU](https://github.com/NIZAR-BENAKKADOU)
+- 💼 LinkedIn: [nizar-benakkadou](https://www.linkedin.com/in/nizar-benakkadou-2bb541311/)
+- 🐙 GitHub: [@NIZAR-BENAKKADOU](https://github.com/NIZAR-BENAKKADOU)
+- 📧 Email: nizar.ben123456@gmail.com
 
 ## 📄 Licence
 
@@ -146,6 +157,6 @@ Ce projet est sous licence privée - tous droits réservés.
 
 ---
 
-⭐ **Star ce repo** si vous le trouvez utile ! 
+⭐ **Star ce repo** si vous le trouvez utile!
 
-💼 **Contactez-moi** pour des opportunités de collaboration ou des projets freelance. 
+💼 **Contactez-moi** pour des opportunités de collaboration ou des projets freelance.
